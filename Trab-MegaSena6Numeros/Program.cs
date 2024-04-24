@@ -4,88 +4,32 @@ using System.Runtime.CompilerServices;
 while (true)
 {
 
-    int aux, opcao, numero, numero2, size, sizerandom, x, pos, tentativa;
+    int aux, opcao, numero, size, x, pos, sizerandom, random;
    
     opcao = 0;
     numero = 0;
     size = 6;
     x = 1;
     pos = 0;
-    tentativa = 0;
-    sizerandom = 500;
+    sizerandom = 60;
+    random = 0;
 
-    int[] megasena = new int[sizerandom];
+    int[] megasena = new int[60];
     int[] megausuario = new int[size];
-    int[] megasena_ord = new int[size];
     int[] megasena_ok = new int[size];
     int[] megasena_unique = new int[size];
 
     // USO VETOR "MEGASENA" COM 60 POSICOES
     for (int i = 0; i < sizerandom; i++)
     {
-        megasena[i] = new Random().Next(1, 60);
+        megasena[i] = i+1;
     }
 
-    // ORDENO ESSE VETOR "MEGASENA" EM ORDEM CRESCENTE
-    for (int i = 0; i < sizerandom; i++)
+    for (int i = 0; i < 6; i++)
     {
-        for (int j = i + 1; j < sizerandom; j++)
-        {
-            if (megasena[i] > megasena[j])
-            {
-                aux = megasena[i];
-                megasena[i] = megasena[j];
-                megasena[j] = aux;
-            }
-        }
+        random = new Random().Next(1, 60);
+        megasena_unique[i] = megasena[random];
     }
-
-    // AGORA EM ORDEM CRESCENTE, PEGO O VETOR E TUDO QUE FOR REPETIDO ASSOCIO AO NUMERO ZERO
-    for (int i = 0; i < sizerandom;  i++)
-    {
-        for (int j = i + 1; j < sizerandom; j++)
-        {
-            if (megasena[i] == megasena[j])
-            {
-                //Console.Write(megasena[i] + " ");
-                megasena[i] = 0;
-                megasena[j] = 0;
-            }
-        }
-    }
-
-    // FAÇO UM LAÇO PARA PEGAR SOMENTE OS NUMEROS DIFERENTES DE ZERO, E USO UMA VARIAVEL PARA SALVAR A POSICAO
-    // PARA SALVRA NO VETOR "MEGASENA_UNIQUE" SOMENTE OS NUMEROS NAO REPETIDOS E DE 6 POSICOES
-    for (int i = 0; i < sizerandom && pos < 6; i++)
-    {
-        if (megasena[i] != 0)
-        {
-            //Console.Write(megasena[i] + " ");
-            megasena_unique[pos] = megasena[i];
-            pos++;
-        }
-    }
-
-    /*
-    for (int i = 0; i < size; i++)
-    {
-        megasena[i] = new Random().Next(1, 60);
-        megasena_ord[i] = megasena[i];
-    }
-
-    for (int i = 0; i < size; i++)
-    {
-        for (int j = i + 1; j < size; j++)
-        {
-            if (megasena_ord[i] > megasena_ord[j])
-            {
-                aux = megasena_ord[i];
-                megasena_ord[i] = megasena_ord[j];
-                megasena_ord[j] = aux;
-            }
-        }
-    }
-    */
 
     x = 0;
     numero = 0;
